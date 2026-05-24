@@ -3,7 +3,7 @@
 <img width="950" height="288" alt="Screenshot 2026-05-23 223532" src="https://github.com/user-attachments/assets/89b7912b-be54-4583-b4e5-e66882d580eb"/>
 
 ## 1.0 Introduction
-Time-Series forecasting is widely used in financial and energy markets to capture temporal dependencies and price fluctuations. In this project, the USEP dataset was analyzed using a hybrid modelling approach. First, ARIMA (1, 1, 1) was applied to capture linear patterns and trends in the time series. Next, GARCH (1, 1) was used to model volatility clustering present in the ARIMA residuals. Finally, engineered features derived from these models were used to train a Random Forest Regressor and BiLSTM. 
+Time-Series forecasting is widely used in financial and energy markets to capture temporal dependencies and price fluctuations. In this project, the USEP dataset was analysed using a hybrid modelling approach. First, ARIMA (1, 1, 1) was applied to capture linear patterns and trends in the time series. Next, GARCH (1, 1) was used to model volatility clustering present in the ARIMA residuals. Finally, engineered features derived from these models were used to train a Random Forest Regressor and BiLSTM. 
 
 The workflow includes:
 1. Data preprocessing and exploratory analysis.
@@ -15,7 +15,7 @@ The workflow includes:
 
 
 ## 2.0 Problem Statement 
-The objective of this study is to develop a predictive framework for forecasting the Uniform Singapore Energy Price (USEP) using statistical and machine learning approaches. Electricity prices are highly volatile and influenced by both historical trends and market uncertainty. TO address this challenge, it combines ARIMA for time-series trend modeling, GARCH for volatility estimation, and Random Forest Regression/ BiLSTM for nonlinear predictive learning. The study aims to evaluate whether integrating econometric models with machine learning and deep learning techniques can improve forecasting accuracy. 
+The objective of this study is to develop a predictive framework for forecasting the Uniform Singapore Energy Price (USEP) using statistical and machine learning approaches. Electricity prices are highly volatile and influenced by both historical trends and market uncertainty. To address this challenge, it combines ARIMA for time-series trend modeling, GARCH for volatility estimation, and Random Forest Regression/ BiLSTM for nonlinear predictive learning. Furthermore, it also evaluates whether integrating econometric models with machine learning and deep learning techniques can improve forecasting accuracy. 
 
 
 ## 3.0 ARIMA (1, 1, 1)

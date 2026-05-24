@@ -66,10 +66,12 @@ Several features were engineered to improve predictive performance:
 
 The dataset was then divided into training and testing subsets using a time-series split approach, ensuring that temporal ordering was preserved. 
 
-This feature engineering process allowed the Random Forest and BiLSTM model to learn both trend and volatility characteristics from the time series. 
+This feature engineering process allowed the Random Forest and BiLSTM models to learn both trend and volatility characteristics from the time series. 
 
 ## 6.0 Random Forest Regressor 
+A Random Forest Regressor was trained using the engineered features. Hyperparameter tuning was performed using GridSearchCV with TimeSeriesSplit cross-validation. Parameters such as the number of estimators, maximum tree depth, minimum samples per split, and minimum samples per leaf were optimized. 
 
+The Random Forest model was selected because of its ability to model non-linear relationships and interaction between features without requiring strong statistical assumptions. 
 
 
 ## 7.0 BiLSTM Regressor 
@@ -79,7 +81,16 @@ This feature engineering process allowed the Random Forest and BiLSTM model to l
 
 ## 8.0 Model Comparison 
 
+### 8.1 Random Forest Regressor
+#### 8.1.1 Training Performance 
+- MAE: 3.7303
+- RMSE: 10.8280
+- R2 Score: 0.9344
 
+#### 8.1.2 Testing Performance
+- MAE: 6.1488
+- RMSE: 7.6781
+- R2 Score: 0.8992
 
 
 ## 9.0 Future Work 

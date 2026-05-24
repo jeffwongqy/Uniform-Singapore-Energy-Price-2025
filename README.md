@@ -126,6 +126,15 @@ The Random Forest model was selected because of its ability to model non-linear 
 https://www.nems.emcsg.com/nems-prices
 
 ## References
+Montgomery, D. C., Jennings, C. L., & Kulahci, M. (2016). Introduction to time series analysis and forecasting. Wiley.
+
+‌Ruppert, D. (2016). Statistics and data analysis for financial engineering. Springer-Verlag New York.
+
+‌James, G., Witten, D., Hastie, T., Tibshirani, R., & Taylor, J. (2023). An Introduction to Statistical Learning. Springer Nature. https://www.statlearning.com/
+
+‌Aurelien Geron. (2019). Hands-on machine learning with Scikit-Learn, Keras and TensorFlow : concepts, tools, and techniques to build intelligent systems. O’reilly.
+
+‌
 
 
 

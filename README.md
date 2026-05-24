@@ -5,7 +5,7 @@
 ## 1.0 Introduction
 Time-Series forecasting is widely used in financial and energy markets to capture temporal dependencies and price fluctuations. In this project, the USEP dataset was analyzed using a hybrid modelling approach. First, ARIMA (1, 1, 1) was applied to capture linear patterns and trends in the time series. Next, GARCH (1, 1) was used to model volatility clustering present in the ARIMA residuals. Finally, engineered features derived from these models were used to train a Random Forest Regressor and BiLSTM. 
 
-The Workflow includes:
+The workflow includes:
 1. Data preprocessing and exploratory analysis.
 2. ARIMA modeling
 3. GARCH modeling
@@ -19,7 +19,19 @@ The objective of this study is to develop a predictive framework for forecasting
 
 
 ## 3.0 ARIMA (1, 1, 1)
+An ARIMA (1, 1, 1) model was selected to forecast the USEP time series after examining the stationarity and autocorrelation structure of the data. The ARIMA model contains three parameters:
+- p = 1: autoregressive (AR) order
+- d = 1: first differencing
+- q = 1: moving-average (MA) order
 
+### 3.1 Determination of Parameters
+The original USEP series exhibited non-stationary behaviour, where the mean and variance changed over time. Since ARIMA requires a stationary series, first-order differencing was applied. 
+
+This transformation removes long-term trends by subtracting consecutive observations. After one differencing step, the series appeared more stable around a constant mean, d = 1 was selected.  
+
+The differenced series was then analysed using the Autocorrelation Function (ACF) and Partial Autocorrelation Function (PACF) plots.
+- The PACF plot showed a strong spike at lag 1 followed by a sharp decline, indicating that only one significant autoregressive term was needed. Therefore, p = 1.
+- The ACF plot also displayed a significant spike at lag 1 with gradual decay afterward, suggesting a first-order moving-average process. Therefore, q = 1. 
 
 
 ## 4.0 GARCH (1, 1)

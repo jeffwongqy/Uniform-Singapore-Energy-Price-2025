@@ -59,7 +59,14 @@ Despite removing most linear structure, the residuals still displayed periods of
 
 
 ## 5.0 Feature Engineering 
+Several features were engineered to improve predictive performance:
+- Lagged USEP values to capture short-term temporal dependency.
+- GARCH residuals to incorporate volatility-related information.
+- Standardized GARCH residuals to normalize volatility effects.
 
+The dataset was then divided into training and testing subsets using a time-series split approach, ensuring that temporal ordering was preserved. 
+
+This feature engineering process allowed the Random Forest and BiLSTM model to learn both trend and volatility characteristics from the time series. 
 
 ## 6.0 Random Forest Regressor 
 

@@ -1,6 +1,6 @@
 # Uniform Singapore Energy Price 2025
 
-<img width="850" height="288" alt="Screenshot 2026-05-23 223532" src="https://github.com/user-attachments/assets/89b7912b-be54-4583-b4e5-e66882d580eb"/>
+<img width="950" height="288" alt="Screenshot 2026-05-23 223532" src="https://github.com/user-attachments/assets/89b7912b-be54-4583-b4e5-e66882d580eb"/>
 
 ## 1.0 Introduction
 Time-Series forecasting is widely used in financial and energy markets to capture temporal dependencies and price fluctuations. In this project, the USEP dataset was analyzed using a hybrid modelling approach. First, ARIMA (1, 1, 1) was applied to capture linear patterns and trends in the time series. Next, GARCH (1, 1) was used to model volatility clustering present in the ARIMA residuals. Finally, engineered features derived from these models were used to train a Random Forest Regressor and BiLSTM. 
@@ -50,12 +50,17 @@ The ARIMA summary output provides statistical information about the fitted model
 - Standard Error indicates the uncertainty associated with each estimated coefficient.
 - z-statistic and p-value determine whether the coefficients are statistically significant. (i.e. Small p-values (typically less than 0.05) indicate that the coefficient contributes meaningfully to the model.)
 
+<img width="500" height="350" alt="arima" src="https://github.com/user-attachments/assets/93203cbf-730c-41a7-a71d-c75339a833e1" />
+
 ### 3.4 Residual Diagnostics 
 After fitting the ARIMA model, residual diagnostics were analyzed to determine whether the remaining errors behaved like white noise. 
 - Residual Plot: Residuals fluctuated randomly around zero without obvious patterns, suggesting that most linear dependencies were removed.
 - Histogram/ Density Plot: The residual distribution appeared approximately centered around zero, although some heavy tails remained due to volatility in electricity prices.
 - ACF of residuals: The residuals autocorrelations were relatively small and mostly within confidence intervals, indicating limited remaining serial correlation.
 - Ljung-Box Test: This test evaluates whether residual autocorrelation remains significant. Insignificant p-values suggest that the residuals behave similarly to white noise.
+
+
+<img width="500" height="350" alt="download" src="https://github.com/user-attachments/assets/7c2b3ec0-4a47-4c90-a01f-5033fd0be078" />
 
 ### 3.5 Intermediate Conclusion
 Despite removing most linear structure, the residuals still displayed periods of changing variance, known as heteroscedasticity. This justified the use of GARCH (1, 1) model in the next stage to capture volatility clustering. 

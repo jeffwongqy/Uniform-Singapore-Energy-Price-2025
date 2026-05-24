@@ -7,10 +7,10 @@ Time-Series forecasting is widely used in financial and energy markets to captur
 
 The workflow includes:
 1. Data preprocessing and exploratory analysis.
-2. ARIMA modeling
-3. GARCH modeling
+2. ARIMA modelling
+3. GARCH modelling
 4. Feature engineering using lagged values and residual statistics.
-5. Random Forest and BiLSTM training and hyperparameter optimization
+5. Random Forest and BiLSTM training and hyperparameter optimisation
 6. Model Evaluation using MAE, RMSE, and R2 metrics. 
 
 
@@ -31,7 +31,13 @@ This transformation removes long-term trends by subtracting consecutive observat
 
 The differenced series was then analysed using the Autocorrelation Function (ACF) and Partial Autocorrelation Function (PACF) plots.
 - The PACF plot showed a strong spike at lag 1 followed by a sharp decline, indicating that only one significant autoregressive term was needed. Therefore, p = 1.
-- The ACF plot also displayed a significant spike at lag 1 with gradual decay afterward, suggesting a first-order moving-average process. Therefore, q = 1. 
+
+<img width="720" height="537" alt="pacf" src="https://github.com/user-attachments/assets/29868441-91b5-4e72-ad60-8ead5dabdfa5" />
+
+- The ACF plot also displayed a significant spike at lag 1 with gradual decay afterward, suggesting a first-order moving-average process. Therefore, q = 1.
+
+<img width="722" height="547" alt="acf" src="https://github.com/user-attachments/assets/27024e13-e4b6-4757-97fb-2ef0283c9bcb" />
+
 
 ### 3.2 ARIMA Model Representation
 The fitted ARIMA model can be expressed as: 

@@ -39,6 +39,12 @@
 ## Conclusion 
 
 
+## Libraries
+- Sklearn
+- Keras
+- StatsModels
+
+
 
 ## References
 

@@ -33,6 +33,27 @@ The differenced series was then analysed using the Autocorrelation Function (ACF
 - The PACF plot showed a strong spike at lag 1 followed by a sharp decline, indicating that only one significant autoregressive term was needed. Therefore, p = 1.
 - The ACF plot also displayed a significant spike at lag 1 with gradual decay afterward, suggesting a first-order moving-average process. Therefore, q = 1. 
 
+### 3.2 ARIMA Model Representation
+The fitted ARIMA model can be expressed as: 
+
+
+### 3.3 Interpretation of ARIMA Summary Outputs
+The ARIMA summary output provides statistical information about the fitted model:
+- AR coefficient (ar.L1) measures the relationship between the current differenced value and its previous value.
+- MA coefficient (ma.L1) measures the relationship between the current value and the previous forecast error.
+- Standard Error indicates the uncertainty associated with each estimated coefficient.
+- z-statistic and p-value determine whether the coefficients are statistically significant. (i.e. Small p-values (typically less than 0.05) indicate that the coefficient contributes meaningfully to the model.)
+
+### 3.4 Residual Diagnostics 
+After fitting the ARIMA model, residual diagnostics were analyzed to determine whether the remaining errors behaved like white noise. 
+- Residual Plot: Residuals fluctuated randomly around zero without obvious patterns, suggesting that most linear dependencies were removed.
+- Histogram/ Density Plot: The residual distribution appeared approximately centered around zero, although some heavy tails remained due to volatility in electricity prices.
+- ACF of residuals: The residuals autocorrelations were relatively small and mostly within confidence intervals, indicating limited remaining serial correlation.
+- Ljung-Box Test: This test evaluates whether residual autocorrelation remains significant. Insignificant p-values suggest that the residuals behave similarly to white noise.
+
+### 3.5 Intermediate Conclusion
+Despite removing most linear structure, the residuals still displayed periods of changing variance, known as heteroscedasticity. This justified the use of GARCH (1, 1) model in the next stage to capture volatility clustering. 
+
 
 ## 4.0 GARCH (1, 1)
 

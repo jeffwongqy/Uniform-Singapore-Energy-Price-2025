@@ -82,7 +82,7 @@ This feature engineering process allowed the Random Forest and BiLSTM models to 
 ## 6.0 Random Forest Regressor 
 A Random Forest Regressor was trained using the engineered features. Hyperparameter tuning was performed using GridSearchCV with TimeSeriesSplit cross-validation. Parameters such as the number of estimators, maximum tree depth, minimum samples per split, and minimum samples per leaf were optimized. 
 
-The Random Forest model was selected because of its ability to model non-linear relationships and interaction between features without requiring strong statistical assumptions. 
+The Random Forest model was selected because of its ability to model non-linear relationships and interactions between features without requiring strong statistical assumptions. 
 
 
 ## 7.0 BiLSTM Regressor 
@@ -98,10 +98,16 @@ The Random Forest model was selected because of its ability to model non-linear 
 - RMSE: 10.8280
 - R2 Score: 0.9344
 
+<img width="850" height="547" alt="rf_train" src="https://github.com/user-attachments/assets/880cf6f3-7480-4671-9488-62a2e42a2dc7" />
+
+
+
 #### 8.1.2 Testing Performance
 - MAE: 6.1488
 - RMSE: 7.6781
 - R2 Score: 0.8992
+
+<img width="850" height="547" alt="rf_test" src="https://github.com/user-attachments/assets/5f7e6d5a-0973-46a8-b974-93377d70fe16" />
 
 
 ## 9.0 Future Work 

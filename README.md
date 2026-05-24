@@ -1,6 +1,6 @@
 # Uniform Singapore Energy Price 2025
 
-<img width="637" height="288" alt="Screenshot 2026-05-23 223532" src="https://github.com/user-attachments/assets/89b7912b-be54-4583-b4e5-e66882d580eb"/>
+<img width="850" height="288" alt="Screenshot 2026-05-23 223532" src="https://github.com/user-attachments/assets/89b7912b-be54-4583-b4e5-e66882d580eb"/>
 
 ## 1.0 Introduction
 Time-Series forecasting is widely used in financial and energy markets to capture temporal dependencies and price fluctuations. In this project, the USEP dataset was analyzed using a hybrid modelling approach. First, ARIMA (1, 1, 1) was applied to capture linear patterns and trends in the time series. Next, GARCH (1, 1) was used to model volatility clustering present in the ARIMA residuals. Finally, engineered features derived from these models were used to train a Random Forest Regressor and BiLSTM. 
@@ -32,11 +32,11 @@ This transformation removes long-term trends by subtracting consecutive observat
 The differenced series was then analysed using the Autocorrelation Function (ACF) and Partial Autocorrelation Function (PACF) plots.
 - The PACF plot showed a strong spike at lag 1 followed by a sharp decline, indicating that only one significant autoregressive term was needed. Therefore, p = 1.
 
-<img width="720" height="537" alt="pacf" src="https://github.com/user-attachments/assets/29868441-91b5-4e72-ad60-8ead5dabdfa5" />
+<img width="500" height="350" alt="pacf" src="https://github.com/user-attachments/assets/29868441-91b5-4e72-ad60-8ead5dabdfa5" />
 
 - The ACF plot also displayed a significant spike at lag 1 with gradual decay afterward, suggesting a first-order moving-average process. Therefore, q = 1.
 
-<img width="722" height="547" alt="acf" src="https://github.com/user-attachments/assets/27024e13-e4b6-4757-97fb-2ef0283c9bcb" />
+<img width="500" height="350" alt="acf" src="https://github.com/user-attachments/assets/27024e13-e4b6-4757-97fb-2ef0283c9bcb" />
 
 
 ### 3.2 ARIMA Model Representation

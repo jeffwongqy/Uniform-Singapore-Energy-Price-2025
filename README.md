@@ -2,49 +2,59 @@
 
 <img width="637" height="288" alt="Screenshot 2026-05-23 223532" src="https://github.com/user-attachments/assets/89b7912b-be54-4583-b4e5-e66882d580eb"/>
 
-## Problem Statement 
+## 1.0 Introduction
+Time-Series forecasting is widely used in financial and energy markets to capture temporal dependencies and price fluctuations. In this project, the USEP dataset was analyzed using a hybrid modelling approach. First, ARIMA (1, 1, 1) was applied to capture linear patterns and trends in the time series. Next, GARCH (1, 1) was used to model volatility clustering present in the ARIMA residuals. Finally, engineered features derived from these models were used to train a Random Forest Regressor and BiLSTM. 
+
+The Workflow includes:
+1. Data preprocessing and exploratory analysis.
+2. ARIMA modeling
+3. GARCH modeling
+4. Feature engineering using lagged values and residual statistics.
+5. Random Forest and BiLSTM training and hyperparameter optimization
+6. Model Evaluation using MAE, RMSE, and R2 metrics. 
 
 
-## Introduction 
+## 2.0 Problem Statement 
+The objective of this study is to develop a predictive framework for forecasting the Uniform Singapore Energy Price (USEP) using statistical and machine learning approaches. Electricity prices are highly volatile and influenced by both historical trends and market uncertainty. TO address this challenge, it combines ARIMA for time-series trend modeling, GARCH for volatility estimation, and Random Forest Regression/ BiLSTM for nonlinear predictive learning. The study aims to evaluate whether integrating econometric models with machine learning and deep learning techniques can improve forecasting accuracy. 
 
 
-## ARIMA (1, 1, 1)
-
-
-
-## GARCH (1, 1)
-
-
-## Feature Engineering 
-
-
-## Random Forest Regressor 
-
-
-
-## BiLSTM Regressor 
+## 3.0 ARIMA (1, 1, 1)
 
 
 
-
-## Model Comparison 
-
+## 4.0 GARCH (1, 1)
 
 
-
-## Future Work 
-
+## 5.0 Feature Engineering 
 
 
-## Conclusion 
+## 6.0 Random Forest Regressor 
 
 
-## Libraries
+
+## 7.0 BiLSTM Regressor 
+
+
+
+
+## 8.0 Model Comparison 
+
+
+
+
+## 9.0 Future Work 
+
+
+
+## 10.0 Conclusion 
+
+
+## 11.0 Libraries
 - Sklearn
 - Keras
 - StatsModels
 
-## Datasets
+## 12.0 Datasets
 https://www.nems.emcsg.com/nems-prices
 
 ## References

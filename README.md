@@ -43,7 +43,7 @@ The differenced series was then analysed using the Autocorrelation Function (ACF
 The fitted ARIMA model can be expressed as: 
 
 
-### 3.3 Interpretation of ARIMA Summary Outputs
+### 3.3 Summary Output Interpretation
 The ARIMA summary output provides statistical information about the fitted model:
 - AR coefficient (ar.L1) measures the relationship between the current differenced value and its previous value.
 - MA coefficient (ma.L1) measures the relationship between the current value and the previous forecast error.
@@ -53,7 +53,7 @@ The ARIMA summary output provides statistical information about the fitted model
 <img width="500" height="350" alt="arima" src="https://github.com/user-attachments/assets/93203cbf-730c-41a7-a71d-c75339a833e1" />
 
 ### 3.4 Residual Diagnostics 
-After fitting the ARIMA model, residual diagnostics were analyzed to determine whether the remaining errors behaved like white noise. 
+After fitting the ARIMA model, residual diagnostics were examined to assess whether the residuals behaved like white noise. 
 - Residual Plot: Residuals fluctuated randomly around zero without obvious patterns, suggesting that most linear dependencies were removed.
 - Histogram/ Density Plot: The residual distribution appeared approximately centered around zero, although some heavy tails remained due to volatility in electricity prices.
 - ACF of residuals: The residuals autocorrelations were relatively small and mostly within confidence intervals, indicating limited remaining serial correlation.
@@ -67,7 +67,21 @@ Despite removing most linear structure, the residuals still displayed periods of
 
 
 ## 4.0 GARCH (1, 1)
+After fitting the ARIMA model, the residuals were modeled using a GARCH(1,1) process with a Student's t-distribution to capture volatility clustering and time-varying conditional variance in the USEP series. 
 
+The ARIMA residuals still showed heteroscedasticity, where periods of high volatility were followed by periods of low volatility. The squared residual ACF showed significant correlation at lag 1. 
+
+The GARCH model contains:
+- p = 1: one lag of squared residual (ARCH term)
+- q = 1: one lag of conditional variance (GARCH term)
+
+As such, GARCH (1, 1) was selected because a first-order ARCH and GARCH structure was sufficient to capture short-term volatility persistence without making the model unnecessarily complex. 
+
+### 4.1 Summary Output Interpretation
+The GARCH summary output consists of the mean model and volatility model coefficients:
+- omega: represents the baseline or long-run variance - a significant p-value indicates stable background volatility.
+- alpha1: measures how strongly recent shocks affect current volatility - a significant p-value below 0.05 indicates that sudden price changes have a meaningful impact on volatility.
+- beta1: measures how persistent volatility remains over time - a significant p-value confirms persistent conditional variance.
 
 ## 5.0 Feature Engineering 
 Several features were engineered to improve predictive performance:

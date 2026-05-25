@@ -3,7 +3,7 @@
 <img width="950" height="288" alt="Screenshot 2026-05-23 223532" src="https://github.com/user-attachments/assets/89b7912b-be54-4583-b4e5-e66882d580eb"/>
 
 ## 1.0 Introduction
-Time-Series forecasting is widely used in financial and energy markets to capture temporal dependencies and price fluctuations. In this project, the USEP dataset was analysed using a hybrid modelling approach. First, ARIMA (1, 1, 1) was applied to capture linear patterns and trends in the time series. Next, GARCH (1, 1) was used to model volatility clustering present in the ARIMA residuals. Finally, engineered features derived from these models were used to train a Random Forest Regressor and BiLSTM. 
+Time-series forecasting plays an important role in understanding temporal dynamics in financial and energy markets, particularly in capturing evolving price behaviour and volatility. In this study, the USEP dataset is examined using a hybrid modelling framework that integrates both statistical and machine learning approaches. An ARIMA(1,1,1) model is first employed to characterise the underlying linear structure and trend components in the series. To account for time-varying volatility observed in the residuals, a GARCH(1,1) model is subsequently introduced. Features derived from both models are then used as inputs for two predictive models—a Random Forest Regressor and a BiLSTM network—to evaluate their effectiveness in capturing complex, non-linear patterns in the data.
 
 The workflow includes:
 1. Data preprocessing and exploratory analysis.

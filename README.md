@@ -45,12 +45,13 @@ The fitted ARIMA model can be expressed as:
 
 ### 3.3 Summary Output Interpretation
 The ARIMA summary output provides statistical information about the fitted model:
+
+<img width="500" height="350" alt="arima" src="https://github.com/user-attachments/assets/93203cbf-730c-41a7-a71d-c75339a833e1" />
+
 - AR coefficient (ar.L1) measures the relationship between the current differenced value and its previous value.
 - MA coefficient (ma.L1) measures the relationship between the current value and the previous forecast error.
 - Standard Error indicates the uncertainty associated with each estimated coefficient.
 - z-statistic and p-value determine whether the coefficients are statistically significant. (i.e. Small p-values (typically less than 0.05) indicate that the coefficient contributes meaningfully to the model.)
-
-<img width="500" height="350" alt="arima" src="https://github.com/user-attachments/assets/93203cbf-730c-41a7-a71d-c75339a833e1" />
 
 ### 3.4 Residual Diagnostics 
 After fitting the ARIMA model, residual diagnostics were examined to assess whether the residuals behaved like white noise. 
@@ -77,12 +78,16 @@ The GARCH model contains:
 
 ### 4.1 Summary Output Interpretation
 The GARCH summary output consists of the mean model and volatility model coefficients:
+
+<img width="500" height="350" alt="Screenshot 2026-05-25 103737" src="https://github.com/user-attachments/assets/000bf703-266e-419e-b225-83086df8654b" />
+
 - omega: represents the baseline or long-run variance - a significant p-value indicates stable background volatility.
 - alpha1: measures how strongly recent shocks affect current volatility - a significant p-value below 0.05 indicates that sudden price changes have a meaningful impact on volatility.
 - beta1: measures how persistent volatility remains over time - a significant p-value confirms persistent conditional variance.
 
-### Intermediate Conclusion
+### 4.2 Intermediate Conclusion
 GARCH (1, 1) was sufficient to capture short-term volatility persistence without making the model unnecessarily complex, due to the first-order ARCH and GARCH structure. 
+
 
 ## 5.0 Feature Engineering 
 Several features were engineered to improve predictive performance:

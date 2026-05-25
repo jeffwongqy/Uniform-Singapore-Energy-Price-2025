@@ -75,13 +75,14 @@ The GARCH model contains:
 - p = 1: one lag of squared residual (ARCH term)
 - q = 1: one lag of conditional variance (GARCH term)
 
-As such, GARCH (1, 1) was selected because a first-order ARCH and GARCH structure was sufficient to capture short-term volatility persistence without making the model unnecessarily complex. 
-
 ### 4.1 Summary Output Interpretation
 The GARCH summary output consists of the mean model and volatility model coefficients:
 - omega: represents the baseline or long-run variance - a significant p-value indicates stable background volatility.
 - alpha1: measures how strongly recent shocks affect current volatility - a significant p-value below 0.05 indicates that sudden price changes have a meaningful impact on volatility.
 - beta1: measures how persistent volatility remains over time - a significant p-value confirms persistent conditional variance.
+
+### Intermediate Conclusion
+GARCH (1, 1) was sufficient to capture short-term volatility persistence without making the model unnecessarily complex, due to the first-order ARCH and GARCH structure. 
 
 ## 5.0 Feature Engineering 
 Several features were engineered to improve predictive performance:

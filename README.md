@@ -212,11 +212,17 @@ history = op_model.fit(X_train_reshaped, y_train,
                     verbose = 1)
 ````
 
-1. A bidirectional LSTM layer with tanh activation was used to learn both forward and backward temporal relationships in the USEP time series, allowing the model to capture long-term sequential dependencies and contextual information from past and future observations simultaneously.
-2. A second LSTM layer with tanh activation, which further refined the high-level temporal features extracted from the BiLSTM layer and improved sequence representation learning.
-3. The model included a Dense hidden layer with 16 neurons and ReLU activation, which transformed the extracted sequential features into more meaningful nonlinear representations while improving training efficiency and reducing vanishing gradient issues.
-4. A final Dense(1) output layer was then used to generate the final USEP price prediction.
-5. The model was trained using the Adam optimizer and Mean Squared Error (MSE) loss function. 
+1. Bidirectional LSTM Layer (128 units) - Captures forward and backward temporal dependencies in the USEP time series to learn long-term sequential patterns.
+2. LSTM Layer (32 units) - Refines the temporal features extracted from the Bidirectional LSTM layer for improved sequence learning.
+3. First Dense Layer (32 neurons, ReLU) - Transforms learned temporal features into non-linear representations for better prediction learning.
+4. Second Dense Layer (32 neurons, ReLU) - Further fine-tune feature representations to improve model accuracy and learning capability.
+5. Output Layer (1 neuron) - Produces the final predicted USEP value for the regression task.
+6. Adam Optimizer - Optimizes model weights efficiently using adaptive gradient learning.
+7. MSE Loss Function - Measures prediction error by calculating the average squared difference between actual and predicted values.
+8. Validation Split (0.1) - Uses 10% of the training data to evaluate model generalization during training.
+9. Batch Size (32) - Processes training samples in batches of 32 to improve computational efficiency and training stability.
+10. Epochs (100) - Allows the model to iteratively learn patterns over 100 training cycle. 
+
 
 ### 7.3 Learning Behaviour 
 The training and validation loss curves showed a steady decrease throughout training, indicating that the model successfully learned the temporal structure of the USEP data. 

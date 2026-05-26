@@ -223,16 +223,16 @@ No major divergence between training and validation loss was observed, indicatin
 
 ### 8.2 BilSTM
 #### 8.2.1 Training Performance
-- MAE:
-- RMSE:
-- R2 Score:
+- MAE: 3.6843
+- RMSE: 10.7931
+- R2 Score: 0.9348
 
 <img width="850" height="547" alt="train_bilstm" src="https://github.com/user-attachments/assets/47b95149-1fc7-40b9-925c-04ea161a77b4" />
 
 #### 8.2.2 Testing Performance
-- MAE:
-- RMSE:
-- R2 Score:
+- MAE: 5.0070
+- RMSE: 7.1711
+- R2 Score: 0.9121
 
 <img width="850" height="547" alt="test_bilstm" src="https://github.com/user-attachments/assets/ddf7a998-0b32-4fa9-8144-52d8c61729c7" />
 

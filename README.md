@@ -113,6 +113,9 @@ To improve model performance, hyperparameter tuning was performed using TimeSeri
 
 ### 7.2 Architecture 
 The final optimized BiLSTM architecture consisted of three main components. 
+
+<img width="500" height="350" alt="bilstm architecture" src="https://github.com/user-attachments/assets/07fb9543-15f8-4e65-bfa5-c150120dae75" />
+
 1. A bidirectional LSTM layer with tanh activation was used to learn both forward and backward temporal relationships in the USEP time series, allowing the model to capture long-term sequential dependencies and contextual information from past and future observations simultaneously.
 2. A second LSTM layer with tanh activation, which further refined the high-level temporal features extracted from the BiLSTM layer and improved sequence representation learning.
 3. The model included a Dense hidden layer with 16 neurons and ReLU activation, which transformed the extracted sequential features into more meaningful nonlinear representations while improving training efficiency and reducing vanishing gradient issues.
@@ -122,9 +125,14 @@ The final optimized BiLSTM architecture consisted of three main components.
 ### 7.3 Learning Behaviour 
 The training and validation loss curves showed a steady decrease throughout training, indicating that the model successfully learned the temporal structure of the USEP data. 
 
+<img width="500" height="350" alt="loss curve" src="https://github.com/user-attachments/assets/68931adc-d5eb-47e2-be8e-8f7dd0343372" />
+
 The MSE curve also decreased consistently over epochs, suggesting improved prediction accuracy and stable convergence during training. 
 
+<img width="500" height="350" alt="loss curve" src="https://github.com/user-attachments/assets/f880d2c1-edfc-4f48-82ef-794d59275af1" />
+
 No major divergence between training and validation loss was observed, indicating limited overfitting and good generalization performance. 
+
 
 ## 8.0 Model Comparison 
 
@@ -147,12 +155,20 @@ No major divergence between training and validation loss was observed, indicatin
 
 
 ### 8.2 BilSTM
-
-
 #### 8.2.1 Training Performance
+- MAE:
+- RMSE:
+- R2 Score:
 
+<img width="850" height="547" alt="train_bilstm" src="https://github.com/user-attachments/assets/47b95149-1fc7-40b9-925c-04ea161a77b4" />
 
 #### 8.2.2 Testing Performance
+- MAE:
+- RMSE:
+- R2 Score:
+
+<img width="850" height="547" alt="test_bilstm" src="https://github.com/user-attachments/assets/ddf7a998-0b32-4fa9-8144-52d8c61729c7" />
+
 
 ## 9.0 Future Work 
 

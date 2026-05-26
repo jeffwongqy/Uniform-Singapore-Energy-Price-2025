@@ -164,8 +164,11 @@ The tuned BiLSTM model outperformed the Random Forest Regressor across all evalu
 
 ## 11.0 Libraries
 - Sklearn
+- Tensorflow
 - Keras
 - StatsModels
+- Matplotlib
+- Seaborn 
 
 ## 12.0 Datasets
 https://www.nems.emcsg.com/nems-prices

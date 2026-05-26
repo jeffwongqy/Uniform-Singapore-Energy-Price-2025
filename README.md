@@ -142,7 +142,7 @@ A Bidirectional Long Short-Term Memory (BiLSTM) model was implemented to capture
 ### 7.1 Hyperparameter Tuning and Model Training 
 To improve model performance, hyperparameter tuning was performed using TimeSeriesSplit cross-validation, which preserves the dataset's chronological order and prevents future data leakage. Different numbers of neurons were evaluated in the dense layers to optimize feature refinement after the BiLSTM layers extracted complex temporal patterns from the time-series data. The dense layers transform these learned sequential features into final prediction outputs, where too few neurons may lead to underfitting, while too many may increase overfitting and computational complexity. Therefore, various dense neural network configurations were evaluated to balance model complexity, learning capability, and generalization performance.
 
-````
+````python
 # hyperparameters tuning
 dense_neurons_layer1 = [8, 16, 32]
 dense_neurons_layer2 = [8, 16, 32]
@@ -192,7 +192,7 @@ The best parameters and RMSE were found to be {'dense_neuron_layer1': 32, 'dense
 ### 7.2 Architecture 
 The final optimized BiLSTM architecture consisted of three main components. 
 
-````
+````python
 op_model = Sequential()
 op_model.add(Bidirectional(LSTM(128,
                                 kernel_regularizer = "l2",

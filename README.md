@@ -107,7 +107,7 @@ The Random Forest Regressor was selected because it is effective in modeling com
 ### 6.1 Hyperparameter Tuning and Model Training 
 To improve model performance, hyperparameter tuning was performed using GridSearchCV with TimeSeriesSplit cross-validation, which preserves the chronological order of time-series and prevents future data leakage. The tuning process evaluated different combinations of key parameters, including the number of trees (n_estimators = 50 to 100), maximum tree depth (max_depth = 8 to 10), minimum samples required at leaf nodes (min_samples_leaf = 1 to 5), and minimum samples required for node splitting (min_samples_split = 2 to 5). Model performance was evaluated using negative mean squared error, and the parameter combination with the best validation performance was selected as the final optimized Random Forest model. 
 
-````{python}
+````python
 # initialize the base random forest regressor
 rfr = RandomForestRegressor(random_state = 42)
 

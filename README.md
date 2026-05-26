@@ -102,7 +102,7 @@ This feature engineering process allowed the Random Forest and BiLSTM models to 
 ## 6.0 Random Forest Regressor 
 The Random Forest Regressor was selected because it is effective in modeling complex nonlinear relationships and interactions between engineered features without requiring strong statistical assumptions. Its ensemble structure combines multiple decision trees, which improves prediction stability and reduces overfitting compared to a single decision tree model. 
 
-### 6.1 Hyperparameter Tuning
+### 6.1 Hyperparameter Tuning and Model Training 
 To improve model performance, hyperparameter tuning was performed using GridSearchCV with TimeSeriesSplit cross-validation, which preserves the chronological order of time-series and prevents future data leakage. The tuning process evaluated different combinations of key parameters, including the number of trees (n_estimators = 50 to 100), maximum tree depth (max_depth = 8 to 10), minimum samples required at leaf nodes (min_samples_leaf = 1 to 5), and minimum samples required for node splitting (min_samples_split = 2 to 5). Model performance was evaluated using negative mean squared error, and the parameter combination with the best validation performance was selected as the final optimized Random Forest model. 
 
 ````
@@ -137,7 +137,7 @@ grid_search.fit(X_train, y_train)
 ## 7.0 BiLSTM
 A Bidirectional Long Short-Term Memory (BiLSTM) model was implemented to capture nonlinear temporal dependencies in the USEP time series. Compared to a Random Forest regressor, the BiLSTM processes information in both forward and backward directions, allowing the model to learn richer sequential patterns from historical electricity price movements. 
 
-### 7.1 Hyperparameter Tuning 
+### 7.1 Hyperparameter Tuning and Model Training 
 To improve model performance, hyperparameter tuning was performed using TimeSeriesSplit cross-validation, which preserves the dataset's chronological order and prevents future data leakage. Different numbers of neurons were evaluated in the dense layers to optimize feature refinement after the BiLSTM layers extracted complex temporal patterns from the time-series data. The dense layers transform these learned sequential features into final prediction outputs, where too few neurons may lead to underfitting, while too many may increase overfitting and computational complexity. Therefore, various dense neural network configurations were evaluated to balance model complexity, learning capability, and generalization performance.
 
 ````

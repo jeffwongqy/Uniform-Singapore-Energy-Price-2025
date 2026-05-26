@@ -129,7 +129,7 @@ The training and validation loss curves showed a steady decrease throughout trai
 
 The MSE curve also decreased consistently over epochs, suggesting improved prediction accuracy and stable convergence during training. 
 
-<img width="500" height="350" alt="loss curve" src="https://github.com/user-attachments/assets/f880d2c1-edfc-4f48-82ef-794d59275af1" />
+<img width="500" height="350" alt="mse curve" src="https://github.com/user-attachments/assets/bbcc2293-a173-47c2-876f-ba98b61ceb11" />
 
 No major divergence between training and validation loss was observed, indicating limited overfitting and good generalization performance. 
 

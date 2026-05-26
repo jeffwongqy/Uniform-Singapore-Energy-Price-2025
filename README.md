@@ -273,7 +273,7 @@ No major divergence between training and validation loss was observed, indicatin
 
 
 ## 9.0 Future Work 
-
+Future work may include incorporating additional external variables such as weather conditions, fuel prices, and electricity demand to further improve forecasting accuracy. More advanced deep learning architectures, such as GRU, Transformer, or hybrid Generative models, can also be explored.
 
 
 ## 10.0 Conclusion 

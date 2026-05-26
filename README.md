@@ -1,9 +1,5 @@
 # Uniform Singapore Energy Price 2025
 
-````
-print("Hello World")
-````
-
 <img width="950" height="288" alt="Screenshot 2026-05-23 223532" src="https://github.com/user-attachments/assets/89b7912b-be54-4583-b4e5-e66882d580eb"/>
 
 ## 1.0 Introduction
@@ -113,12 +109,34 @@ The Random Forest model was selected because of its ability to model non-linear 
 A Bidirectional Long Short-Term Memory (BiLSTM) model was implemented to capture nonlinear temporal dependencies in the USEP time series. Compared to a Random Forest regressor, the BiLSTM processes information in both forward and backward directions, allowing the model to learn richer sequential patterns from historical electricity price movements. 
 
 ### 7.1 Hyperparameter Tuning 
-To improve model performance, hyperparameter tuning was performed using TimeSeriesSplit cross-validation, which preserves the chronological order of the dataset and prevents future data leakage. Different numbers of neurons were evaluated in the dense layers to optimize feature refinement after the BiLSTM layers extracted complex temporal patterns from the time-series data. The dense layers transform these learned sequential features into final prediction outputs, where too few neurons may lead to underfitting, while too many may increase overfitting and computational complexity. Therefore, different dense neuron configurations were evaluated to achieve a balance between model complexity, learning capability, and generalization performance.
+To improve model performance, hyperparameter tuning was performed using TimeSeriesSplit cross-validation, which preserves the dataset's chronological order and prevents future data leakage. Different numbers of neurons were evaluated in the dense layers to optimize feature refinement after the BiLSTM layers extracted complex temporal patterns from the time-series data. The dense layers transform these learned sequential features into final prediction outputs, where too few neurons may lead to underfitting, while too many may increase overfitting and computational complexity. Therefore, various dense neural network configurations were evaluated to balance model complexity, learning capability, and generalization performance.
+
+
 
 ### 7.2 Architecture 
 The final optimized BiLSTM architecture consisted of three main components. 
 
-<img width="500" height="350" alt="bilstm architecture" src="https://github.com/user-attachments/assets/07fb9543-15f8-4e65-bfa5-c150120dae75" />
+````
+op_model = Sequential()
+op_model.add(Bidirectional(LSTM(128,
+                                kernel_regularizer = "l2",
+                                activation = "tanh",
+                                return_sequences = True),
+                           input_shape = (1, 4)))
+op_model.add(LSTM(32, kernel_regularizer = "l2", activation = "tanh"))
+op_model.add(Dense(32, activation = "relu"))
+op_model.add(Dense(32, activation = "relu"))
+op_model.add(Dense(1))
+op_model.compile(optimizer = "adam", loss = "mse", metrics = ['mse'])
+
+op_model.summary()
+
+history = op_model.fit(X_train_reshaped, y_train,
+                    epochs = 100,
+                    validation_split = 0.1,
+                    batch_size = 32,
+                    verbose = 1)
+````
 
 1. A bidirectional LSTM layer with tanh activation was used to learn both forward and backward temporal relationships in the USEP time series, allowing the model to capture long-term sequential dependencies and contextual information from past and future observations simultaneously.
 2. A second LSTM layer with tanh activation, which further refined the high-level temporal features extracted from the BiLSTM layer and improved sequence representation learning.

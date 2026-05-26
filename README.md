@@ -111,6 +111,51 @@ A Bidirectional Long Short-Term Memory (BiLSTM) model was implemented to capture
 ### 7.1 Hyperparameter Tuning 
 To improve model performance, hyperparameter tuning was performed using TimeSeriesSplit cross-validation, which preserves the dataset's chronological order and prevents future data leakage. Different numbers of neurons were evaluated in the dense layers to optimize feature refinement after the BiLSTM layers extracted complex temporal patterns from the time-series data. The dense layers transform these learned sequential features into final prediction outputs, where too few neurons may lead to underfitting, while too many may increase overfitting and computational complexity. Therefore, various dense neural network configurations were evaluated to balance model complexity, learning capability, and generalization performance.
 
+````
+# hyperparameters tuning
+dense_neurons_layer1 = [8, 16, 32]
+dense_neurons_layer2 = [8, 16, 32]
+
+best_rmse = float("inf")
+best_params = None
+
+for dense_neuron_layer1 in dense_neurons_layer1:
+  for dense_neuron_layer2 in dense_neurons_layer2:
+    rmses = []
+
+    for train_idx, val_idx in tscv.split(X_train_reshaped):
+      X_train_fold, X_val_fold = X_train_reshaped[train_idx], X_train_reshaped[val_idx]
+      y_train_fold, y_val_fold = y_train.iloc[train_idx], y_train.iloc[val_idx]
+
+      model = Sequential()
+      model.add(Bidirectional(LSTM(128, kernel_regularizer = "l2", activation = "tanh", return_sequences = True), input_shape = (1, 4)))
+      model.add(LSTM(32, kernel_regularizer = "l2", activation = "tanh"))
+      model.add(Dense(dense_neuron_layer1, activation = "relu"))
+      model.add(Dense(dense_neuron_layer2, activation = "relu"))
+      model.add(Dense(1))
+      model.compile(optimizer = "adam", loss = "mse", metrics = ['mse'])
+
+      model.fit(X_train_fold, y_train_fold,
+                epochs = 100,
+                batch_size = 32,
+                validation_split = 0.1,
+                verbose = 1)
+
+      y_pred_val = model.predict(X_val_fold)
+      rmse = np.sqrt(mean_squared_error(y_val_fold, y_pred_val))
+      rmses.append(rmse)
+
+    avg_rmse = np.mean(rmses)
+
+    print("dense_neuron_layer1 = {}, dense_neuron_layer2 = {}, RMSE = {:.4f}".format(dense_neuron_layer1, dense_neuron_layer2, avg_rmse))
+    if avg_rmse < best_rmse:
+      best_rmse = avg_rmse
+      best_params = {'dense_neuron_layer1': dense_neuron_layer1,
+                     'dense_neuron_layer2': dense_neuron_layer2}
+
+````
+
+The best parameters and RMSE were found to be {'dense_neuron_layer1': 32, 'dense_neuron_layer2': 32} and 21.80629527366256, respectively. 
 
 
 ### 7.2 Architecture 

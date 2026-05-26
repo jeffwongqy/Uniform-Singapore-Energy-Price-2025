@@ -105,10 +105,26 @@ A Random Forest Regressor was trained using the engineered features. Hyperparame
 The Random Forest model was selected because of its ability to model non-linear relationships and interactions between features without requiring strong statistical assumptions. 
 
 
-## 7.0 BiLSTM Regressor 
-TBC
+## 7.0 BiLSTM
+A Bidirectional Long Short-Term Memory (BiLSTM) model was implemented to capture nonlinear temporal dependencies in the USEP time series. Compared to a Random Forest regressor, the BiLSTM processes information in both forward and backward directions, allowing the model to learn richer sequential patterns from historical electricity price movements. 
 
+### 7.1 Hyperparameter Tuning 
+To improve model performance, hyperparameter tuning was performed using TimeSeriesSplit cross-validation, which preserves the chronological order of the dataset and prevents future data leakage. Different numbers of neurons were evaluated in the dense layers to optimize feature refinement after the BiLSTM layers extracted complex temporal patterns from the time-series data. The dense layers transform these learned sequential features into final prediction outputs, where too few neurons may lead to underfitting, while too many may increase overfitting and computational complexity. Therefore, different dense neuron configurations were evaluated to achieve a balance between model complexity, learning capability, and generalization performance.
 
+### 7.2 Architecture 
+The final optimized BiLSTM architecture consisted of three main components. 
+1. A bidirectional LSTM layer with tanh activation was used to learn both forward and backward temporal relationships in the USEP time series, allowing the model to capture long-term sequential dependencies and contextual information from past and future observations simultaneously.
+2. A second LSTM layer with tanh activation, which further refined the high-level temporal features extracted from the BiLSTM layer and improved sequence representation learning.
+3. The model included a Dense hidden layer with 16 neurons and ReLU activation, which transformed the extracted sequential features into more meaningful nonlinear representations while improving training efficiency and reducing vanishing gradient issues.
+4. A final Dense(1) output layer was then used to generate the final USEP price prediction.
+5. The model was trained using the Adam optimizer and Mean Squared Error (MSE) loss function. 
+
+### 7.3 Learning Behaviour 
+The training and validation loss curves showed a steady decrease throughout training, indicating that the model successfully learned the temporal structure of the USEP data. 
+
+The MSE curve also decreased consistently over epochs, suggesting improved prediction accuracy and stable convergence during training. 
+
+No major divergence between training and validation loss was observed, indicating limited overfitting and good generalization performance. 
 
 ## 8.0 Model Comparison 
 
@@ -130,11 +146,20 @@ TBC
 <img width="850" height="547" alt="rf_test" src="https://github.com/user-attachments/assets/5f7e6d5a-0973-46a8-b974-93377d70fe16" />
 
 
+### 8.2 BilSTM
+
+
+#### 8.2.1 Training Performance
+
+
+#### 8.2.2 Testing Performance
+
 ## 9.0 Future Work 
 
 
 
 ## 10.0 Conclusion 
+The tuned BiLSTM model outperformed the Random Forest Regressor across all evaluation metrics. Its ability to learn sequential dependencies directly from time-series data allowed it to achieve better forecasting accuracy and stronger generalization performance on unseen data. 
 
 
 ## 11.0 Libraries

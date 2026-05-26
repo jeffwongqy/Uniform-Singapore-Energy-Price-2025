@@ -17,7 +17,7 @@ The workflow includes:
 ## 2.0 Problem Statement 
 The objective of this study is to develop a predictive framework for forecasting the Uniform Singapore Energy Price (USEP) using statistical and machine learning approaches. Electricity prices are highly volatile and influenced by both historical trends and market uncertainty. To address this challenge, it combines ARIMA for time-series trend modeling, GARCH for volatility estimation, and Random Forest Regression/ BiLSTM for nonlinear predictive learning. Furthermore, it also evaluates whether integrating econometric models with machine learning and deep learning techniques can improve forecasting accuracy. 
 
-<img width="500" height="350" alt="sg_usep_2025" src="https://github.com/user-attachments/assets/75d06bde-0793-4e39-8389-c0938bff83ed" />
+<img width="1000" height="350" alt="sg_usep_2025" src="https://github.com/user-attachments/assets/75d06bde-0793-4e39-8389-c0938bff83ed" />
 
 
 ## 3.0 ARIMA (1, 1, 1)

@@ -100,9 +100,38 @@ The dataset was then divided into training and testing subsets using a time-seri
 This feature engineering process allowed the Random Forest and BiLSTM models to learn both trend and volatility characteristics from the time series. 
 
 ## 6.0 Random Forest Regressor 
-A Random Forest Regressor was trained using the engineered features. Hyperparameter tuning was performed using GridSearchCV with TimeSeriesSplit cross-validation. Parameters such as the number of estimators, maximum tree depth, minimum samples per split, and minimum samples per leaf were optimized. 
+The Random Forest Regressor was selected because it is effective in modeling complex nonlinear relationships and interactions between engineered features without requiring strong statistical assumptions. Its ensemble structure combines multiple decision trees, which improves prediction stability and reduces overfitting compared to a single decision tree model. 
 
-The Random Forest model was selected because of its ability to model non-linear relationships and interactions between features without requiring strong statistical assumptions. 
+### 6.1 Hyperparameter Tuning
+To improve model performance, hyperparameter tuning was performed using GridSearchCV with TimeSeriesSplit cross-validation, which preserves the chronological order of time-series and prevents future data leakage. The tuning process evaluated different combinations of key parameters, including the number of trees (n_estimators = 50 to 100), maximum tree depth (max_depth = 8 to 10), minimum samples required at leaf nodes (min_samples_leaf = 1 to 5), and minimum samples required for node splitting (min_samples_split = 2 to 5). Model performance was evaluated using negative mean squared error, and the parameter combination with the best validation performance was selected as the final optimized Random Forest model. 
+
+````
+# initialize the base random forest regressor
+rfr = RandomForestRegressor(random_state = 42)
+
+# define the hyperparameter grid
+param_grid = {'n_estimators': [50, 60, 70, 80, 90, 100],
+              'max_depth': [8, 9, 10],
+              'min_samples_leaf': [1, 2, 3, 4, 5],
+              'min_samples_split': [2, 3, 4, 5]}
+
+# set up time series split
+tscv = TimeSeriesSplit(n_splits = 5)
+
+# set up the grid search cross-validation configuration
+grid_search = GridSearchCV(estimator = rfr,
+                           param_grid = param_grid,
+                           cv = tscv,
+                           n_jobs = 1,
+                           verbose = 3,
+                           scoring = 'neg_mean_squared_error',
+                           return_train_score = True,
+                           refit = True)
+
+# execute the search over all parameter combination
+grid_search.fit(X_train, y_train)
+
+````
 
 
 ## 7.0 BiLSTM

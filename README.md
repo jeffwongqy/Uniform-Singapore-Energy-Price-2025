@@ -134,6 +134,9 @@ grid_search = GridSearchCV(estimator = rfr,
 grid_search.fit(X_train, y_train)
 
 ````
+The best estimators are: `{'max_depth': 9, 'min_samples_leaf': 2, 'min_samples_split': 2, 'n_estimators': 60}`.
+
+The best score for the best estimators is: `-706.6194354494473`.
 
 
 ## 7.0 BiLSTM
@@ -189,7 +192,9 @@ for dense_neuron_layer1 in dense_neurons_layer1:
 
 ````
 
-The best parameters and RMSE were found to be {'dense_neuron_layer1': 32, 'dense_neuron_layer2': 32} and 21.80629527366256, respectively. 
+The best parameters are: `{'dense_neuron_layer1': 32, 'dense_neuron_layer2': 32}`. 
+
+The best score for the best parameters is `21.80629527366256`.
 
 
 ### 7.2 Architecture 

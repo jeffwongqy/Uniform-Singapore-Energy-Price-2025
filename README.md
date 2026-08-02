@@ -1,4 +1,4 @@
-# Uniform Singapore Energy Price (USEP) Forecasting Using Hybrid Time Series and Machine Learning Models
+# Hybrid Forecasting of Uniform Singapore Energy Price (USEP)
 
 <img width="950" height="288" alt="Screenshot 2026-05-23 223532" src="https://github.com/user-attachments/assets/89b7912b-be54-4583-b4e5-e66882d580eb"/>
 
